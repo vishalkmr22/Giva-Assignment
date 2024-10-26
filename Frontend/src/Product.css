@@ -1,28 +1,28 @@
-.product-list-container {
+.products-container {
     padding: 20px;
     position: relative;
 }
 
-.product-list-heading {
+.products-header {
     text-align: center;
     margin-bottom: 20px;
 }
 
-.add-product-button {
+.create-product-btn {
     position: absolute;
     top: 20px;
     right: 20px;
 }
 
-.product-list {
+.products-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
 }
 
-.product-item {
-    border: 1px solid #ddd;
+.product-card {
+    border: 1px solid #eee;
     border-radius: 8px;
     padding: 16px;
     width: 250px;
@@ -30,13 +30,13 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.add-product-container {
+.product-entry-form {
     max-width: 500px;
-    margin: 0 auto;
+    margin: auto;
     padding: 20px;
 }
 
-.add-product-form {
+.product-entry {
     display: flex;
     flex-direction: column;
 }

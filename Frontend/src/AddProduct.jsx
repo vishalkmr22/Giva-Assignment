@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import './Product.css';
+import './Product.css';  // This imports Product.css
 
 const AddProduct = () => {
     const navigate = useNavigate();
@@ -63,9 +63,9 @@ const AddProduct = () => {
     };
 
     return (
-        <div className="add-product-container">
+        <div className="product-entry-form">  // Changed to match CSS for form styling
             <h1>Add a New Product</h1>
-            <form className="add-product-form" onSubmit={handleSubmit}>
+            <form className="product-entry" onSubmit={handleSubmit}>  // Changed to apply the right flex styling
                 <TextField
                     label="Name"
                     name="name"

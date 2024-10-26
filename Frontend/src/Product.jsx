@@ -35,23 +35,22 @@ const ProductList = () => {
     };
 
     return (
-        <div className="product-list-container">
-            <h1 className="product-list-heading">Product List</h1>
+        <div className="products-container">
+            <h1 className="products-header">Product List</h1>
             <Button
                 variant="contained"
                 color="primary"
-                className="add-product-button"
-                href="/add-product"
-                style={{ position: 'absolute', top: '10px', right: '20px' }}
+                className="create-product-btn"
+                onClick={() => navigate('/add-product')}
             >
                 Add a Product
             </Button>
             {products.length === 0 ? (
                 <p>No products available</p>
             ) : (
-                <div className="product-list">
+                <div className="products-grid">
                     {products.map((product) => (
-                        <div key={product.id} className="product-item">
+                        <div key={product.id} className="product-card">
                             <h2>{product.name}</h2>
                             <p>{product.description}</p>
                             <p>Price: ${product.price}</p>
@@ -59,7 +58,7 @@ const ProductList = () => {
                             <Button
                                 variant="outlined"
                                 color="secondary"
-                                onClick={() => navigate(`/edit-product/${product.id}`)} // Navigate to EditProduct
+                                onClick={() => navigate(`/edit-product/${product.id}`)}
                                 style={{ marginRight: '10px' }}
                             >
                                 Edit

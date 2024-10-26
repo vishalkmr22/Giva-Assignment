@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import './EditProduct.css';
+import './EditProduct.css';  // This imports EditProduct.css correctly
 
 const EditProduct = () => {
   const { id } = useParams();
@@ -24,8 +24,7 @@ const EditProduct = () => {
           price: data.price,
           available_quantity: data.available_quantity, 
         });
-      } catch (error) 
-      {
+      } catch (error) {
         console.error('Error fetching product:', error);
       }
     };
@@ -43,7 +42,7 @@ const EditProduct = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:3000/product/${id}`, {
+      const response = await fetch(`http://localhost:3000/products/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -51,24 +50,25 @@ const EditProduct = () => {
         body: JSON.stringify({
           name: product.name,
           description: product.description,
-          price: parseFloat(product.price), 
-          available_quantity: parseInt(product.available_quantity, 10), 
+          price: parseFloat(product.price),
+          available_quantity: parseInt(product.available_quantity, 10),
         }),
       });
       if (response.ok) {
-        navigate('/'); 
+        navigate('/');  // Redirecting to the home page or list after update
       } else {
-        console.error('Failed to update product');
+        throw new Error('Failed to update product');
       }
     } catch (error) {
       console.error('Error updating product:', error);
+      alert('Failed to update product');
     }
   };
 
   return (
-    <div className="edit-product-container">
+    <div className="product-edit-wrapper">  // Uses .product-edit-wrapper for styling
       <h2>Edit Product</h2>
-      <form onSubmit={handleSubmit} className="edit-product-form">
+      <form onSubmit={handleSubmit} className="product-edit-form">  // Uses .product-edit-form for styling
         <label>
           Name:
           <input
@@ -97,20 +97,19 @@ const EditProduct = () => {
             value={product.price}
             onChange={handleChange}
             required
-            step="0.01" 
+            step="0.01"  // Ensures decimal values can be entered for prices
           />
         </label>
         <label>
-  Available Quantity:
-  <input
-    type="number"
-    name="available_quantity"
-    value={product.available_quantity}
-    onChange={handleChange}
-    required
-  />
-</label>
-
+          Available Quantity:
+          <input
+            type="number"
+            name="available_quantity"
+            value={product.available_quantity}
+            onChange={handleChange}
+            required
+          />
+        </label>
         <button type="submit">Update Product</button>
       </form>
     </div>

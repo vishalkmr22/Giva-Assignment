@@ -12,10 +12,10 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 const client = new Client({
-    user: 'abhishek',
+    user: 'vishal',
     host: 'localhost',
     database: 'giva',
-    password: 'abhishek',
+    password: 'vishal',
     port: 5432,
 });
 
